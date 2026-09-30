@@ -91,19 +91,26 @@ section.block.arena { background: var(--arena); }
 .nuevo { font-size: .66rem; background: #e8f07a; color: var(--verde-osc); padding: 1px 7px; border-radius: 999px; margin-left: 6px; vertical-align: 2px; letter-spacing: .08em; }
 .menu-nota { text-align: center; color: var(--muted); font-size: .88rem; margin-top: 28px; }
 
-/* Menú por plato */
+/* Menú por plato: foto al lado del nombre */
 .menu-cat { font-size: .95rem; color: #fff; background: var(--verde); display: inline-block; padding: 5px 16px; border-radius: 999px; margin: 44px 0 18px; }
 .sec-head + .menu-cat { margin-top: 0; }
-.platos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.plato { background: #fff; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
-.plato > img, .plato .sin-foto { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.platos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 24px; }
+.plato { background: #fff; border-radius: 16px; overflow: hidden; display: flex; flex-direction: row; align-items: stretch; min-height: 150px; }
+.plato > img, .plato .sin-foto { flex: 0 0 150px; width: 150px; height: auto; min-height: 150px; object-fit: cover; }
 .plato .sin-foto { background: var(--salvia); display: grid; place-items: center; }
-.plato .sin-foto img { width: 46%; opacity: .9; }
-.plato .info { padding: 14px 16px 18px; }
-.plato h4 { font-weight: 500; color: var(--verde-osc); font-size: .95rem; line-height: 1.3; margin-bottom: 6px; }
-.plato p { font-size: .83rem; color: var(--muted); line-height: 1.5; }
-@media (max-width: 900px) { .platos { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 600px) { .platos { grid-template-columns: repeat(2, 1fr); gap: 12px; } .plato .info { padding: 10px 12px 14px; } .plato h4 { font-size: .88rem; } .plato p { font-size: .78rem; } }
+.plato .sin-foto img { width: 70%; opacity: .9; }
+.plato .info { padding: 16px 18px; display: flex; flex-direction: column; justify-content: center; }
+.plato h4 { font-weight: 500; color: var(--verde-osc); font-size: 1rem; line-height: 1.3; margin-bottom: 6px; }
+.plato p { font-size: .85rem; color: var(--muted); line-height: 1.5; }
+@media (max-width: 900px) { .platos { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .platos { gap: 12px; }
+  .plato { min-height: 116px; }
+  .plato > img, .plato .sin-foto { flex-basis: 116px; width: 116px; min-height: 116px; }
+  .plato .info { padding: 12px 14px; }
+  .plato h4 { font-size: .92rem; }
+  .plato p { font-size: .8rem; }
+}
 
 /* Contacto */
 .contacto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
